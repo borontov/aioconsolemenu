@@ -10,17 +10,17 @@ from prompt_toolkit.patch_stdout import patch_stdout
 from aioconsolemenu import templates
 from aioconsolemenu.items import Items
 from aioconsolemenu.paginator import Paginator
-from aioconsolemenu.terminal_utils import terminal_clear
+from aioconsolemenu.terminal_utils import clear_terminal
 
 
 class Menu:
-    """Class for create aio console menu instances."""
+    """Class for create asyncio console menu instances."""
 
     def __init__(
         self,
         items: Items,
         items_per_page: Optional[int] = None,
-        refresh_time_in_seconds: float = 0.4,
+        screen_redraw_rate_in_seconds: float = 0.4,
         title: Optional[str] = None,
     ) -> None:
         """Create menu instance."""
@@ -31,12 +31,12 @@ class Menu:
             self.paginator = Paginator(items, items_per_page)
         else:
             self.paginator = None
-        self.refresh_time_in_seconds: float = refresh_time_in_seconds
+        self.screen_redraw_rate_in_seconds: float = screen_redraw_rate_in_seconds
         self.title = title
 
     @abstractmethod
     async def input_handler(self, input_text: str) -> None:
-        """Abstract method for override default input handler."""
+        """An abstract method forces you to refine the content of the input handler."""
 
     async def prompt_loop(self) -> None:
         """Async loop for menu prompt."""
@@ -56,7 +56,7 @@ class Menu:
                 self.loops.result()
             except asyncio.exceptions.InvalidStateError:
                 self.render()
-                await asyncio.sleep(self.refresh_time_in_seconds)
+                await asyncio.sleep(self.screen_redraw_rate_in_seconds)
             else:
                 return
 
@@ -79,7 +79,7 @@ class Menu:
 
     def render(self) -> None:
         """Render items."""
-        terminal_clear()
+        clear_terminal()
         if self.paginator:
             self.paginator.get_current_page_items()
             string = self.format_page(self.paginator.current_page_items)
