@@ -1,5 +1,5 @@
 """Items."""
-from typing import Any, Coroutine, Optional, Sequence
+from typing import Any, Coroutine, Optional
 
 from infinity import Infinity
 
@@ -10,12 +10,6 @@ class InfinityInt(Infinity, int):  # noqa: WPS600
 
 class Items(list):  # noqa: WPS600
     """Items class."""
-
-    def __init__(self, seq: Sequence = ()) -> None:
-        """Create items instance."""
-        super().__init__()
-        for title in seq:
-            self.add(title=str(title))
 
     def add(
         self,
