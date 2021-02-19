@@ -9,6 +9,7 @@ python = "3.9.1"
 prompt-toolkit = "3.0.16"
 infinity = "1.5"
 aioconsole = "0.3.1"
+mako = "^1.1.4"
 
 [tool.poetry.dev-dependencies]
 black = "20.8b1"
