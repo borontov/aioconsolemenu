@@ -612,7 +612,7 @@ typing_extensions = ">=3.6,<4.0"
 [metadata]
 lock-version = "1.0"
 python-versions = "3.9.1"
-content-hash = "80af8aa89b32c3a79291bb19d273c4abbe748fbced5e39954c9dd9c39462c88b"
+content-hash = "bd52e7c8c0d6f78872e0d0607d3a3704f8a988f1a1483ff1319d95e0495cae34"
 
 [metadata.files]
 aioconsole = [
