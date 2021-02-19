@@ -7,6 +7,7 @@ from typing import Optional
 from prompt_toolkit import PromptSession
 from prompt_toolkit.patch_stdout import patch_stdout
 
+from aioconsolemenu import templates
 from aioconsolemenu.items import Items
 from aioconsolemenu.paginator import Paginator
 from aioconsolemenu.terminal_utils import terminal_clear
@@ -72,15 +73,9 @@ class Menu:
 
     def format_page(self, page_items: list) -> Optional[str]:
         """Format items page as string."""
-        string = ""
-        for key, item in enumerate(page_items, 1):
-            title = item.get("title")
-            string += f"{key}. {title}\n"  # noqa: WPS336
-        if string:
-            if self.title:
-                string = f"{self.title}\n\n" + string  # noqa: WPS336
-            return string
-        return None
+        title = templates.MENU_TITLE_TEMPLATE.render(title=self.title)
+        items = templates.MENU_ITEMS_TEMPLATE.render(items=page_items)
+        return "".join((title, items))
 
     def render(self) -> None:
         """Render items."""
