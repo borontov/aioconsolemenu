@@ -2,6 +2,10 @@
 
 A module that allows you to create console menus using asyncio coroutines to embed asynchronous events such as real-time updating of menu items.
 
+## Demo:
+
+![Image alt](https://github.com/borontov/aioconsolemenu/blob/master/demo.gif)
+
 ## Table of Contents
 - [Features](#features)
 - [Basic Usage](#basic-usage)
