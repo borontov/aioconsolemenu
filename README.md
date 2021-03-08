@@ -11,6 +11,7 @@ A module that allows you to create console menus using asyncio coroutines to emb
 - [Basic Usage](#basic-usage)
 - [FAQ](#faq)
     - [Terminal is flickering. How to fix it?](#terminal-is-flickering-how-to-fix-it)
+    - [How to update the text of an Item in real time?](#how-to-update-the-text-of-an-item-in-real-time)
 
 ## Features
 
@@ -87,3 +88,6 @@ menu_manager.run()
 
 ### Terminal is flickering. How to fix it?
 Try specifying screen_redraw_rate_in_seconds when instantiating the menu class. If this does not work, then try running the script in a different terminal emulator.
+
+### How to update the text of an Item in real time?
+Just change the value of the Item.title. The menu redraws items at the rate you specify in screen_redraw_rate_in_seconds.
