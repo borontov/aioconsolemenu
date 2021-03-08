@@ -4,7 +4,7 @@ A module that allows you to create console menus using asyncio coroutines to emb
 
 ## Demo:
 
-![Image alt](https://github.com/borontov/aioconsolemenu/blob/master/demo.gif)
+![Image alt](https://github.com/borontov/aioconsolemenu/blob/master/demo2.gif)
 
 ## Table of Contents
 - [Features](#features)
