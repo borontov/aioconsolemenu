@@ -21,6 +21,7 @@ A module that allows you to create console menus using asyncio coroutines to emb
 
 First you have to create menu items and asynchronous handlers for them. If you specify sort_id, then items with sort_id in ascending order are printed first. After that, items without sort_id are printed.
 
+Handlers:
 ```python
 async def first_item_handler(current_menu: Menu) -> None:
     """Handler for first item."""
@@ -47,7 +48,10 @@ async def submenu_exit_handler(current_menu: Menu) -> None:
     next_action = SwitchMenuAction(current_menu=current_menu, next_menu=main_menu)
     current_menu.asyncio_gather.set_result(next_action)
     current_menu.asyncio_gather.done()
+```
 
+Items:
+```python
 items1 = Items()
 items1.append(Item("Second item (submenu)", callback=second_item_handler, sort_id=5))
 items1.append(Item("4-h item (print)", callback=other_items_handler))
