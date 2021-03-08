@@ -2,7 +2,8 @@
 import math
 from typing import Any, List
 
-from aioconsolemenu.items import Items
+from aioconsolemenu import templates
+from aioconsolemenu.items import Items, NextPageItem, PrevPageItem
 
 
 class Paginator:
@@ -29,7 +30,7 @@ class Paginator:
         if page in range(1, self.pages_count + 1):
             self.current_page = int(page)
         else:
-            print("No such page exists.")  # noqa: WPS421
+            print(templates.PAGE_DOES_NOT_EXIST.render())  # noqa: WPS421
 
     def get_current_page_items(self) -> None:  # noqa: WPS615, WPS463
         """Set current page items to self.current_page_items."""
@@ -47,16 +48,16 @@ class Paginator:
         if self.pages_count > 1:
             if self.current_page == 1:
                 self.current_page_items.append(
-                    self.items.get_pagination_item(paginator=self, action="next_page"),
+                    NextPageItem(callback=self.next_page),  # type: ignore
                 )
             elif self.current_page < self.pages_count:
                 self.current_page_items.append(
-                    self.items.get_pagination_item(paginator=self, action="next_page"),
+                    PrevPageItem(callback=self.prev_page),  # type: ignore
                 )
                 self.current_page_items.append(
-                    self.items.get_pagination_item(paginator=self, action="prev_page"),
+                    NextPageItem(callback=self.next_page),  # type: ignore
                 )
             else:
                 self.current_page_items.append(
-                    self.items.get_pagination_item(paginator=self, action="prev_page"),
+                    PrevPageItem(callback=self.prev_page),  # type: ignore
                 )
