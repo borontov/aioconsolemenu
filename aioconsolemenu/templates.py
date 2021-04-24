@@ -7,7 +7,7 @@ import os
 
 lookup = TemplateLookup(
     [
-        os.path.abspath("templates/"),
+        str(os.path.abspath(__file__)).replace(".py", ""),
     ],
 )
 logger.debug(lookup.directories)
