@@ -3,10 +3,11 @@ import os
 
 from mako.lookup import TemplateLookup
 from loguru import logger
+import os
 
 lookup = TemplateLookup(
     [
-        "aioconsolemenu/templates/",
+        os.path.abspath("templates/"),
     ],
 )
 logger.debug(lookup.directories)
