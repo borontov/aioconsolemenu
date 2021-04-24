@@ -5,7 +5,7 @@ description = ""
 authors = ["Alexey <anborontov@gmail.com>"]
 
 [tool.poetry.dependencies]
-python = "3.9.1"
+python = ">=3.6.1,<4.0"
 prompt-toolkit = "3.0.16"
 infinity = "1.5"
 aioconsole = "0.3.1"
