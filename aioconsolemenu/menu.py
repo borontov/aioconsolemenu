@@ -50,7 +50,8 @@ class Menu:  # noqa: WPS230
             print(templates.SELECT_OUT_OF_AVAILABLE_OPTIONS.render())  # noqa: WPS421
             sleep(1)
         else:
-            await target_list[item_id].callback(self)  # type: ignore
+            item = target_list[item_id]
+            await item.callback(self, **item.kwargs)  # type: ignore
 
     async def prompt_loop(self) -> None:
         """Async loop for menu prompt."""

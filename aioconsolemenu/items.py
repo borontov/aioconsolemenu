@@ -29,14 +29,14 @@ class Item:
         item_data: Optional[dict] = None,
         sort_id: Optional[int] = InfinityInt(),
         callback: Callable = None,
-        args: Optional[tuple] = None,
+        kwargs: Optional[dict] = None,
     ) -> None:
         """Item init."""
         self.title = title
         self.item_data = item_data
         self.sort_id = sort_id
         self.callback = callback
-        self.args = args
+        self.kwargs = kwargs
 
 
 class NextPageItem(Item):
