@@ -2,12 +2,14 @@
 import os
 
 from mako.lookup import TemplateLookup
+from loguru import logger
 
 lookup = TemplateLookup(
     [
         "aioconsolemenu/templates/",
     ],
 )
+logger.debug(lookup.directories)
 
 NEXT_PAGE_ITEM_TITLE = lookup.get_template("next_page_item_title.txt")
 PREV_PAGE_ITEM_TITLE = lookup.get_template("prev_page_item_title.txt")
