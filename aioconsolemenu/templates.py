@@ -3,11 +3,9 @@ import os
 
 from mako.lookup import TemplateLookup
 
-templates_dir = os.path.abspath("aioconsolemenu/templates/")
-
 lookup = TemplateLookup(
     [
-        templates_dir,
+        "aioconsolemenu/templates/",
     ],
 )
 
