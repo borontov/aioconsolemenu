@@ -36,7 +36,7 @@ class Item:
         self.item_data = item_data
         self.sort_id = sort_id
         self.callback = callback
-        self.kwargs = kwargs
+        self.kwargs = kwargs or dict()
 
 
 class NextPageItem(Item):
