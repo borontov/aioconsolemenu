@@ -3,7 +3,7 @@ import asyncio
 from contextlib import suppress
 from time import sleep
 from typing import Optional
-
+from pynput import keyboard
 from prompt_toolkit import PromptSession
 from prompt_toolkit.patch_stdout import patch_stdout
 
@@ -64,8 +64,15 @@ class Menu:  # noqa: WPS230
             else:
                 return
 
+    def on_press(self, key):
+        pass
+
+
     async def menu_loop(self) -> None:
         """Async loop for menu rendering."""
+        listener = keyboard.Listener(
+            on_press=self.on_press)
+        listener.start()
         while True:
             try:
                 self.asyncio_gather.result()
@@ -73,6 +80,7 @@ class Menu:  # noqa: WPS230
                 self.render()
                 await asyncio.sleep(self.screen_redraw_rate_in_seconds)
             else:
+                listener.stop()
                 return
 
     async def start(self) -> None:
